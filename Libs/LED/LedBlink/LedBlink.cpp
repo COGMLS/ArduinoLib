@@ -234,7 +234,7 @@ void LedBlink::blinkNow()
 }
 
 // Make the LED OFF, if blinking, but also will set to OFF is blinkStyle is NO_BLINK
-void LedBlink::stopBlik()
+void LedBlink::stopBlink()
 {
     this->setOff();
 }
