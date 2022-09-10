@@ -6,10 +6,10 @@ class ButtonPullup
     private:
         bool buttonStatus;
         int buttonPin;
-        int delay;
+        int delayPullup;
     public:
         ButtonPullup(int buttonPin);
-        ButtonPullup(int buttonPin, int delay);
+        ButtonPullup(int buttonPin, int delayPullup);
         ~ButtonPullup();
         void switchStatus();
         void setOn();

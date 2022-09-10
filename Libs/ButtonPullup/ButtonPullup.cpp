@@ -4,14 +4,14 @@ ButtonPullup::ButtonPullup(int buttonPin)
 {
     this->buttonStatus = false;
     this->buttonPin = buttonPin;
-    this->delay = 200;  // 200 ms of delay;
+    this->delayPullup = 200;  // 200 ms of delayPullup;
 }
 
-ButtonPullup::ButtonPullup(int buttonPin, int delay)
+ButtonPullup::ButtonPullup(int buttonPin, int delayPullup)
 {
     this->buttonStatus = false;
     this->buttonPin = buttonPin;
-    this->delay = delay;
+    this->delayPullup = delayPullup;
 }
 
 ButtonPullup::~ButtonPullup()
@@ -27,14 +27,14 @@ bool ButtonPullup::isOn()
 void ButtonPullup::setOff()
 {
     this->buttonStatus = false;
-    delay(this->delay);
+    delayPullup(this->delayPullup);
     digitalWrite(this->buttonStatus, buttonStatus);
 }
 
 void ButtonPullup::setOn()
 {
     this->buttonStatus = true;
-    delay(this->delay);
+    delayPullup(this->delayPullup);
     digitalWrite(this->buttonStatus, buttonStatus);
 }
 
