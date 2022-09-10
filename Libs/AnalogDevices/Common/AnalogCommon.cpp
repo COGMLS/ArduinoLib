@@ -1,34 +1,52 @@
 #include "AnalogCommon.hpp"
 
-AnalogCommon::AnalogCommon(int analogPin)
+ard::AnalogCommon::AnalogCommon::AnalogCommon(int analogPin)
 {
     this->analogPin = analogPin;
     this->lastReadedVal = -1;
 }
 
-AnalogCommon::~AnalogCommon()
+ard::AnalogCommon::AnalogCommon::~AnalogCommon()
 {
 
 }
 
-int AnalogCommon::getLastRead()
+int ard::AnalogCommon::AnalogCommon::getLastRead()
 {
     return this->lastReadedVal;
 }
 
-int AnalogCommon::getLastRead(int out_max, int out_min = 0)
+int ard::AnalogCommon::AnalogCommon::getLastRead(int out_max, int out_min)
 {
-    return 
+    this->lastReadedVal = analogRead(this->analogPin);
+    return (this->lastReadedVal - 0) * (out_max - out_min) / (1023 - 0) + out_min;
 }
 
-int AnalogCommon::read()
+int ard::AnalogCommon::AnalogCommon::read()
 {
     this->lastReadedVal = analogRead(this->analogPin);
     return this->lastReadedVal;
 }
 
-int AnalogCommon::read(int out_max, int out_min = 0)
+int ard::AnalogCommon::AnalogCommon::read(int out_max, int out_min = 0)
 {
     this->lastReadedVal = analogRead(this->analogPin);
-    return (255 * this->lastReadedVal) / 1023;
+    return (this->lastReadedVal - 0) * (out_max - out_min) / (1023 - 0) + out_min;
+}
+
+void ard::AnalogCommon::write(int val)
+{
+    if(val >= 0 && val <= 255)
+    {
+        analogWrite(this->analogPin, val);
+    }
+}
+
+void ard::AnalogCommon::write(short percentage)
+{
+    if(percentage >= 0 && percentage <= 100)
+    {
+        int rawVal = (255 * (int)percentage) / 100;
+        this->write(rawVal);
+    }
 }
