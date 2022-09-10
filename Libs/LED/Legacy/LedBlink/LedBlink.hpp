@@ -51,7 +51,7 @@ class LedBlink : public LedControl
 
         // Other controls:
         void blinkNow();        // Make the LED blink, if the blinkStyle was setted, otherwise will make the LED ON
-        void stopBlik();        // Make the LED OFF, if blinking, but also will set to OFF is blinkStyle is NO_BLINK
+        void stopBlink();       // Make the LED OFF, if blinking, but also will set to OFF is blinkStyle is NO_BLINK
 };
 
 #endif // ARDUINO_LED_BLINK_HPP
