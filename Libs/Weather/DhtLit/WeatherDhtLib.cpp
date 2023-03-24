@@ -26,3 +26,8 @@ float WeatherDhtLib::getHumudity()
 {
     return this->dhtSensor->readHumidity();
 }
+
+DHT* WeatherDhtLib::getRawSensor()
+{
+    return this->dhtSensor;
+}
