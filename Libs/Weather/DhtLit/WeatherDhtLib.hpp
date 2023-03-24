@@ -13,12 +13,23 @@
 class WeatherDhtLib
 {
     private:
+        // DHT sensor object
         DHT* dhtSensor = nullptr;
-    public:
+
+    protected:
         /**
          * @brief Empty constructor class. ONLY for inheritance.
         */
         WeatherDhtLib();
+
+        /**
+         * @brief Configure and initialize the DHT sensor for inheritance classes.
+         * @param dhtPin DHT data pin sensor
+         * @param sensorType Define the DHT sensor type (DHT11, DHT12, DHT21, DHT22 or AM2301)
+        */
+        void setWeatherDhtLib(uint8_t &dhtPin, uint8_t &sensorType);
+
+    public:
 
         /**
          * @brief Define and initialize the Weather DHT object
@@ -43,7 +54,7 @@ class WeatherDhtLib
         /**
          * @brief Get the humidity from sensor
         */
-        float getHumudity();
+        float getHumidity();
 
         /**
          * @brief Exposes the DHT object to use other functions from DHT class library.
