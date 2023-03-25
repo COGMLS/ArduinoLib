@@ -1,51 +1,45 @@
 #include "ButtonPullup.hpp"
 
-ButtonPullup::ButtonPullup(int buttonPin)
+ard::ButtonPullup::ButtonPullup(int buttonPin)
 {
-    this->buttonStatus = false;
+    this->activatePullupStatus = false;
     this->buttonPin = buttonPin;
-    this->delayPullup = 200;  // 200 ms of delayPullup;
+    this->pullupDelay = 200;  // 200 ms of pullupDelay;
 }
 
-ButtonPullup::ButtonPullup(int buttonPin, int delayPullup)
+ard::ButtonPullup::ButtonPullup(int buttonPin, int pullupDelay)
 {
-    this->buttonStatus = false;
+    this->activatePullupStatus = false;
     this->buttonPin = buttonPin;
-    this->delayPullup = delayPullup;
+    this->pullupDelay = pullupDelay;
 }
 
-ButtonPullup::~ButtonPullup()
+ard::ButtonPullup::~ButtonPullup()
 {
 
 }
 
-bool ButtonPullup::isOn()
+bool ard::ButtonPullup::read()
 {
-    return this->buttonStatus;
-}
-
-void ButtonPullup::setOff()
-{
-    this->buttonStatus = false;
-    delayPullup(this->delayPullup);
-    digitalWrite(this->buttonStatus, buttonStatus);
-}
-
-void ButtonPullup::setOn()
-{
-    this->buttonStatus = true;
-    delayPullup(this->delayPullup);
-    digitalWrite(this->buttonStatus, buttonStatus);
-}
-
-void ButtonPullup::switchStatus()
-{
-    if(this->buttonStatus)
+    if(digitalRead(this->buttonPin))
     {
-        this->setOff();
+        delay(this->pullupDelay);
+        if(!digitalRead(this->buttonPin))
+        {
+            if(this->activatePullupStatus)
+            {
+                this->activatePullupStatus = false;
+            }
+            else
+            {
+                this->activatePullupStatus = true;
+            }
+
+            return true;
+        }
+        
+        return false;
     }
-    else
-    {
-        this->setOff();
-    }
+
+    return false;
 }
