@@ -2,14 +2,14 @@
 
 ard::ButtonPullup::ButtonPullup(int buttonPin)
 {
-    this->buttonStatus = false;
+    this->activatePullupStatus = false;
     this->buttonPin = buttonPin;
     this->pullupDelay = 200;  // 200 ms of pullupDelay;
 }
 
 ard::ButtonPullup::ButtonPullup(int buttonPin, int pullupDelay)
 {
-    this->buttonStatus = false;
+    this->activatePullupStatus = false;
     this->buttonPin = buttonPin;
     this->pullupDelay = pullupDelay;
 }
