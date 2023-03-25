@@ -22,6 +22,10 @@ This repository is destinated to development of libraries for Arduino, especiall
 
 The `TestSketch.ino` is an Arduino's project only for tests porposes and is constantly modified.
 
+## Aditional Documentation:
+
+An additional documentation is available [here](./Docs)
+
 ## License:
 
 An copy of this license is available [here](./LICENSE.txt)
