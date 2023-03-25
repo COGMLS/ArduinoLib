@@ -16,9 +16,9 @@ class ThermoHydrometer : WeatherDhtLib
         ~ThermoHydrometer();
         void updateReadings();
         void resetData();
-        float getTemperature();
         bool isCelcius();
         float getCurrentHumidity();
+        float getCurrentTemperature();
         float getLowestTemp();
         float getHighestTemp();
         float getLowestHumidity();

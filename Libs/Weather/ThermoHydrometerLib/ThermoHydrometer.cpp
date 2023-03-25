@@ -69,7 +69,7 @@ void ThermoHydrometer::resetData()
     this->humidity[0] = this->humidity[1] = this->humidity[2] = this->getHumidity();
 }
 
-float ThermoHydrometer::getTemperature()
+float ThermoHydrometer::getCurrentTemperature()
 {
     return this->temperature[1];
 }
