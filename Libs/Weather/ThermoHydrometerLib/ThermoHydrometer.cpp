@@ -4,12 +4,12 @@ ThermoHydrometer::ThermoHydrometer(uint8_t dhtPin, uint8_t sensorType, bool useC
 {
     this->setWeatherDhtLib(dhtPin, sensorType);
 
-    this->humidity[0] = this->humidity[1] = 0.0f;
-    this->temperature[0] = this->temperature[1] = 0.0f;
+    this->humidity[0] = this->humidity[1] = this->humidity[2] = 0.0f;
+    this->temperature[0] = this->temperature[1] = this->temperature[2] = 0.0f;
 
     this->useCelcius = useCelcius;
 
-    this->resetData();
+    //this->resetData();    // Mitigation for bad initialization. Use init function.
 }
 
 ThermoHydrometer::~ThermoHydrometer()
@@ -69,13 +69,48 @@ void ThermoHydrometer::resetData()
     this->humidity[0] = this->humidity[1] = this->humidity[2] = this->getHumidity();
 }
 
-float ThermoHydrometer::getCurrentTemperature()
+void ThermoHydrometer::init()
 {
-    return this->temperature[1];
+    this->resetData();
 }
+
+void ThermoHydrometer::setTemperatureMeasure(bool setCelcius, bool preserveData)
+{
+    if (this->useCelcius != setCelcius)
+    {
+        if (preserveData)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                // Convert to Celcius
+                if (setCelcius)
+                {
+                    this->temperature[i] = ((this->temperature[i] - 32.0f) / 9.0f) * 5.0f;    // C = ((F - 32) / 9) * 5
+                }
+                else    // Convert to Fahrenheit
+                {
+                    this->temperature[i] = (this->temperature[i] * 1.8f) + 32.0f;   // F = (9/5 * C) + 32
+                }
+            }
+
+            this->useCelcius = setCelcius;
+        }
+        else
+        {
+            this->useCelcius = setCelcius;
+            this->resetData();
+        }
+    }
+}
+
 bool ThermoHydrometer::isCelcius()
 {
     return this->useCelcius;
+}
+
+float ThermoHydrometer::getCurrentTemperature()
+{
+    return this->temperature[1];
 }
 
 float ThermoHydrometer::getCurrentHumidity()
@@ -83,12 +118,12 @@ float ThermoHydrometer::getCurrentHumidity()
     return this->humidity[1];
 }
 
-float ThermoHydrometer::getLowestTemp()
+float ThermoHydrometer::getLowestTemperature()
 {
     return this->temperature[0];
 }
 
-float ThermoHydrometer::getHighestTemp()
+float ThermoHydrometer::getHighestTemperature()
 {
     return this->temperature[2];
 }
@@ -100,5 +135,5 @@ float ThermoHydrometer::getLowestHumidity()
 
 float ThermoHydrometer::getHighestHumidity()
 {
-    return this->humidity[1];
+    return this->humidity[2];
 }
