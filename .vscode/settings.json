@@ -15,5 +15,9 @@
         "editor.suggest.insertMode": "replace",
         "editor.semanticHighlighting.enabled": true
     },
-    "arduino.path": "E:\\PortableApps\\Arduino\\ArduinoIDE_1Gen"
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.default.cppStandard": "c++11",
+    //"arduino.path": "${env:PortableApps}\\Arduino\\ArduinoIDE_1Gen",
+    //"arduino.path": "E:\\PortableApps\\Arduino\\ArduinoIDE_1Gen",
+    "arduino.path": "D:\\Program Files\\PortableApps\\Arduino\\ArduinoIDE_1Gen",
 }
