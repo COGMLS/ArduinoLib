@@ -30,7 +30,7 @@ float WeatherDhtLib::getTempC()
 
 float WeatherDhtLib::getTempF()
 {
-    return this->dhtSensor->readTemperature() * 33.8f;
+    return this->dhtSensor->readTemperature(true);
 }
 
 float WeatherDhtLib::getHumidity()
