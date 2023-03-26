@@ -2,7 +2,7 @@
 
 This repository is destinated to development of libraries for Arduino, especially Uno and Mega 2560 models.
 
-> **NOTE:** All projects maded or updated in 2023 and after are only tested on Arduino Mega 2560, because there are no more units for tests available with me.
+> **NOTE:** All projects maded or updated in 2023 and after are only tested with Arduino Mega 2560, because there are no more units for tests available with me.
 
 > **NOTE:** The compatibility with other boards are garanteed from compatibility with others libraries dependencies and the Arduino's documentation.
 
@@ -14,13 +14,18 @@ This repository is destinated to development of libraries for Arduino, especiall
 | Buttons Lib | Library to manage buttons on Arduino boards | 1.0.1 | ALL BOARDS |
 | Display Lib | Library to manage the LCD displays on Arduino boards | 0.0.1a | Arduino Uno, Arduino Mega 2560 |
 | LED Lib | Library to manage LEDs on Arduino boards | 2.0.0 | ALL BOARDS |
+| Relay Lib | Control the relay from an object and provide support to identify if is active or not and the relay type | 0.5.0b | ALL BOARDS |
 | Shield Buttons Lib | Library to control multiple buttons in one analogic pin, using different resistences to make changes on pin's reading. | 0.5.2a | ALL BOARDS | BUG: THIS LIBRARY MAY HAVE INTERFERE ON SERIAL PORTS |
-| Thermo-Hydrometer | An class library that has the history of minimum, current and maximum values of air humidity and temperature (stored as Celcius or Fahrenheit, need be settled first) | 0.8.6b | ALL BOARDS | This library is inherits from WeatherDhtLib. |
-| Weather Dht Lib | Easy access to DHT sensor's control | 0.5.0b | ALL BOARDS | BUG: THIS LIBRARY MAY HAVE INTERFERE ON SERIAL PORTS |
+| Thermo-Hydrometer | An class library that has the history of minimum, current and maximum values of air humidity and temperature (stored as Celcius or Fahrenheit, need be settled first) | 1.0.3 | ALL BOARDS | This library is inherits from WeatherDhtLib. |
+| Weather Dht Lib | Easy access to DHT sensor's control | 1.1.5 | ALL BOARDS |
 
 ## TestSketch.ino:
 
-The `TestSketch.ino` is an Arduino's project only for tests porposes and is constantly modified.
+The `TestSketch.ino` is an Arduino's project only for tests purposes and is frequently modified. The file located inside the repository's root is a template to make fast tests sketches.
+
+## About the Visual Studio Code:
+
+The Visual Studio Code is the main development software used to create and tests the libraries. Consider to avoid or ignore the commits to local Visual Studio Code settings file, specially from `arduino.path` setting necessary to use to work with Arduino IDE resources.
 
 ## Aditional Documentation:
 
