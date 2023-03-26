@@ -1,3 +1,11 @@
-#include <DHT_U.h>
-#include <DHT.h>
+#include <Arduino.h>
 
+void setup()
+{
+
+}
+
+void loop()
+{
+    
+}
