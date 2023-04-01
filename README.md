@@ -11,11 +11,11 @@ This repository is destinated to development of libraries for Arduino, especiall
 | Library Name | Description | Version | Boards Compatibility | Notes |
 | ------------ | ----------- | ------- | -------------------- | ----- |
 | Analog Common | Base library to control analogic devices on Arduino boards. | 1.0.3b | ALL BOARDS | This library only works with 10-bits analog reading data, leaving the value range from 0 to 255. 
-| Buttons Lib | Library to manage buttons on Arduino boards | 1.0.1 | ALL BOARDS |
+| Analog Shield Buttons Lib | Library to control multiple buttons in one analogic pin, using different resistences to make changes on pin's reading. | 1.0.0 | ALL BOARDS | There is a definition that allow to work with 12-bits and 16-bits boards |
+| Button Pullup Lib | Library to manage pullup buttons on Arduino boards | 1.0.1 | ALL BOARDS |
 | Display Lib | Library to manage the LCD displays on Arduino boards | 0.0.1a | Arduino Uno, Arduino Mega 2560 |
 | LED Lib | Library to manage LEDs on Arduino boards | 2.0.0 | ALL BOARDS |
 | Relay Lib | Control the relay from an object and provide support to identify if is active or not and the relay type | 0.5.0b | ALL BOARDS |
-| Shield Buttons Lib | Library to control multiple buttons in one analogic pin, using different resistences to make changes on pin's reading. | 0.5.2a | ALL BOARDS | BUG: THIS LIBRARY MAY HAVE INTERFERE ON SERIAL PORTS |
 | Thermo-Hydrometer | An class library that has the history of minimum, current and maximum values of air humidity and temperature (stored as Celcius or Fahrenheit, need be settled first) | 1.0.3 | ALL BOARDS | This library is inherits from WeatherDhtLib. |
 | Weather Dht Lib | Easy access to DHT sensor's control | 1.1.5 | ALL BOARDS |
 
