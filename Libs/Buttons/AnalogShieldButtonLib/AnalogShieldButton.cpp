@@ -3,7 +3,7 @@
  * @brief Provide simple way to determinate what button was pressed in an analog shield button, detecting the analog input with different resistances associated with each button.
  * 
  * @anchor Matheu L. Silvati
- * @version 0.5.2
+ * @version 1.0.0
  * 
  * @date 2023/04/01
 */

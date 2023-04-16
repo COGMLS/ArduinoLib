@@ -2,6 +2,8 @@
  * @file ButtonPullup.hpp
  * 
  * @short Library to control the button pullup.
+ * 
+ * @version 1.0.1
 */
 
 #pragma once
