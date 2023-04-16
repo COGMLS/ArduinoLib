@@ -1,3 +1,13 @@
+/** DHT Weather Lib
+ * ------------------------------------
+ * @brief Extentd the DHT sensors functionalities.
+ * 
+ * @anchor Matheu L. Silvati
+ * @version 0.5.0b
+ * 
+ * @date 2023/03/23
+*/
+
 #pragma once
 
 #ifndef WEATHER_DHT_LIB_HPP

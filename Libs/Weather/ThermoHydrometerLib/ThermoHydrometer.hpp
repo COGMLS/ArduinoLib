@@ -1,3 +1,13 @@
+/** ThermoHydrometerLib
+ * ------------------------------------
+ * @brief Provide the Thermo-Hydrometer functionalities.
+ * 
+ * @anchor Matheu L. Silvati
+ * @version 0.8.6
+ * 
+ * @date 2023/03/23
+*/
+
 #pragma once
 
 #ifndef THERMO_HYDROMETER_HPP

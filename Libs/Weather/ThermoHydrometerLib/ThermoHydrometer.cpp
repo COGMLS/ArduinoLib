@@ -1,3 +1,13 @@
+/** ThermoHydrometerLib
+ * ------------------------------------
+ * @brief Provide the Thermo-Hydrometer functionalities.
+ * 
+ * @anchor Matheu L. Silvati
+ * @version 0.8.6
+ * 
+ * @date 2023/03/23
+*/
+
 #include "ThermoHydrometer.hpp"
 
 ThermoHydrometer::ThermoHydrometer(uint8_t dhtPin, uint8_t sensorType, bool useCelcius)
