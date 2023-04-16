@@ -3,7 +3,7 @@
  * @brief Provide the Thermo-Hydrometer functionalities.
  * 
  * @anchor Matheu L. Silvati
- * @version 0.8.6
+ * @version 1.0.3
  * 
  * @date 2023/03/23
 */

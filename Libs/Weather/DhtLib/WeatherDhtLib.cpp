@@ -3,7 +3,7 @@
  * @brief Extentd the DHT sensors functionalities.
  * 
  * @anchor Matheu L. Silvati
- * @version 0.5.0b
+ * @version 1.1.5
  * 
  * @date 2023/03/23
 */
