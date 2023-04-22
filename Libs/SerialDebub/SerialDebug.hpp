@@ -9,6 +9,9 @@
 
 class SerialDebugger
 {
+    private:
+        void printNibbleAux(unsigned char data, bool printAsNibble, bool highestNibble, bool printHex);
+
     public:
         SerialDebugger();
         ~SerialDebugger();
@@ -52,13 +55,15 @@ class SerialDebugger
         /// @brief Print a byte data Debug Informations to Serial
         /// @param title Title of the value
         /// @param data Byte data to be printed on serial
-        void printByteDebugInfo(const char title[], byte data);
+        /// @param printHex Define how will print the byte data, 0 - Binary format, 1 - Hexadecimal
+        void printByteDebugInfo(const char title[], unsigned char data, bool printHex);
 
         /// @brief Print a nibble data Debug Informations to Serial
         /// @param title Title of the value
         /// @param data Byte data to be printed on serial
         /// @param highestNibble Print the highest nibble, otherwise will be printed the lowest
-        void printNibbleDebugInfo(const char title[], byte data, bool highestNibble = false);
+        /// @param printHex Define how will print the byte data, 0 - Binary format, 1 - Hexadecimal
+        void printNibbleDebugInfo(const char title[], unsigned char data, bool highestNibble = false, bool printHex = false);
 };
 
 #endif // !SERIAL_DEBUG_LIB_HPP
