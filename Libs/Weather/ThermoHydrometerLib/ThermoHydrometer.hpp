@@ -2,10 +2,10 @@
  * ------------------------------------
  * @brief Provide the Thermo-Hydrometer functionalities.
  * 
- * @anchor Matheu L. Silvati
- * @version 1.0.3
+ * @author Matheu L. Silvati
+ * @version 1.5.6
  * 
- * @date 2023/03/23
+ * @date 2023/04/27
 */
 
 #pragma once
@@ -27,6 +27,11 @@ class ThermoHydrometer : WeatherDhtLib
          * @brief Humidity data: 0 - lowest value, 1 - current value, 2 - highest value
         */
         float humidity[3];
+
+        /**
+         * @brief Correction value: 0 - Temperature (based on current measure unit), 1 - Humidity (in percentage)
+        */
+        float correctValue[2];
         
         // Define if is in Celcius or in Fahrenheit
         bool useCelcius;
@@ -101,6 +106,33 @@ class ThermoHydrometer : WeatherDhtLib
          * @brief Get the highest humidity data from last update reading
         */
         float getHighestHumidity();
+
+        /**
+         * @brief Set a correction value to Temperature.
+         * @param correctTemp Correction Temperature on current temperature measure unit
+         * @note Use with caution this correction value.
+        */
+        void setCorrectTemp(float correctTemp);
+
+        /**
+         * @brief Set a correction value to Humidity
+         * @param correctHumidity Correction Humidity percentage
+         * @note Use values between -100% to 100%.
+         * @note Use with caution this correction value.
+        */
+        void setCorrectHumidity(float correctHumidity);
+
+        /**
+         * @brief Get the correction value to Temperature
+         * @note By default the correction value is 0.0f
+        */
+        float getCorrectTemp();
+        
+        /**
+         * @brief Get the correction value to Humidity (%)
+         * @note By default the correction value is 0.0f
+        */
+        float getCorrectHumidity();
 };
 
 #endif // !THERMO_HYDROMETER_HPP

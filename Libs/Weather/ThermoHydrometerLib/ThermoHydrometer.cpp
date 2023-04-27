@@ -2,10 +2,10 @@
  * ------------------------------------
  * @brief Provide the Thermo-Hydrometer functionalities.
  * 
- * @anchor Matheu L. Silvati
- * @version 1.0.3
+ * @author Matheu L. Silvati
+ * @version 1.5.6
  * 
- * @date 2023/03/23
+ * @date 2023/04/27
 */
 
 #include "ThermoHydrometer.hpp"
@@ -16,10 +16,9 @@ ThermoHydrometer::ThermoHydrometer(uint8_t dhtPin, uint8_t sensorType, bool useC
 
     this->humidity[0] = this->humidity[1] = this->humidity[2] = 0.0f;
     this->temperature[0] = this->temperature[1] = this->temperature[2] = 0.0f;
+    this->correctValue[0] = this->correctValue[1] = 0.0f;
 
     this->useCelcius = useCelcius;
-
-    //this->resetData();    // Mitigation for bad initialization. Use init function.
 }
 
 ThermoHydrometer::~ThermoHydrometer()
@@ -32,13 +31,26 @@ void ThermoHydrometer::updateReadings()
     if (this->useCelcius)
     {
         this->temperature[1] = this->getTempC();
+
     }
     else
     {
         this->temperature[1] = this->getTempF();
     }
 
+    // If correction temperature is applied
+    if (this->correctValue[0] != 0.0f)
+    {
+        this->temperature[1] += this->correctValue[0];
+    }
+
     this->humidity[1] = this->getHumidity();
+    
+    // If correction temperature is applied
+    if (this->correctValue[1] != 0.0f)
+    {
+        this->humidity[1] += this->correctValue[1];
+    }
 
     // Update the humidity data:
 
@@ -88,6 +100,17 @@ void ThermoHydrometer::setTemperatureMeasure(bool setCelcius, bool preserveData)
 {
     if (this->useCelcius != setCelcius)
     {
+        // Convert the correction value
+        if (setCelcius && (this->correctValue[0] != 0.0f))
+        {
+            this->correctValue[0] = ((this->correctValue[0] - 32.0f) / 9.0f) * 5.0f;    // C = ((F - 32) / 9) * 5
+        }
+        else    // Convert to Fahrenheit
+        {
+            this->correctValue[0] = (this->correctValue[0] * 1.8f) + 32.0f;   // F = (9/5 * C) + 32
+        }
+
+        // Convert the storaged data
         if (preserveData)
         {
             for (int i = 0; i < 3; i++)
@@ -146,4 +169,24 @@ float ThermoHydrometer::getLowestHumidity()
 float ThermoHydrometer::getHighestHumidity()
 {
     return this->humidity[2];
+}
+
+void ThermoHydrometer::setCorrectTemp(float correctTemp)
+{
+    this->correctValue[0] = correctTemp;
+}
+
+void ThermoHydrometer::setCorrectHumidity(float correctHumidity)
+{
+    this->correctValue[1] = correctValue;
+}
+
+float ThermoHydrometer::getCorrectTemp()
+{
+    return this->correctValue[0];
+}
+
+float ThermoHydrometer::getCorrectHumidity()
+{
+    return this->correctValue[1];
 }
