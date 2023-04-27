@@ -3,7 +3,7 @@
  * @brief Provide the Thermo-Hydrometer functionalities.
  * 
  * @author Matheu L. Silvati
- * @version 1.5.6
+ * @version 1.6.9
  * 
  * @date 2023/04/27
 */
@@ -35,7 +35,9 @@ class ThermoHydrometer : WeatherDhtLib
         
         // Define if is in Celcius or in Fahrenheit
         bool useCelcius;
-        
+
+        // Use correction values
+        bool useCorrection;
     public:
         /**
          * @brief Create an object to manage the Thermo-Hydrometer data and sensor.
@@ -121,6 +123,10 @@ class ThermoHydrometer : WeatherDhtLib
          * @note Use with caution this correction value.
         */
         void setCorrectHumidity(float correctHumidity);
+
+        /// @brief Set to disable the value correction.
+        /// @note Any call to setCorrectHumidity or setCorrectTemp, will activate the correction again.
+        void setNoCorrection();
 
         /**
          * @brief Get the correction value to Temperature
