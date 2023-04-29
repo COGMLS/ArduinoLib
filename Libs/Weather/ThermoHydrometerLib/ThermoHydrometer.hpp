@@ -3,9 +3,9 @@
  * @brief Provide the Thermo-Hydrometer functionalities.
  * 
  * @author Matheu L. Silvati
- * @version 1.6.9
+ * @version 1.6.10
  * 
- * @date 2023/04/27
+ * @date 2023/04/29
 */
 
 #pragma once
@@ -31,7 +31,7 @@ class ThermoHydrometer : WeatherDhtLib
         /**
          * @brief Correction value: 0 - Temperature (based on current measure unit), 1 - Humidity (in percentage)
         */
-        float correctValue[2];
+        float correctionValue[2];
         
         // Define if is in Celcius or in Fahrenheit
         bool useCelcius;
@@ -111,34 +111,34 @@ class ThermoHydrometer : WeatherDhtLib
 
         /**
          * @brief Set a correction value to Temperature.
-         * @param correctTemp Correction Temperature on current temperature measure unit
+         * @param correctionTemp Correction Temperature on current temperature measure unit
          * @note Use with caution this correction value.
         */
-        void setCorrectTemp(float correctTemp);
+        void setCorrectionTemp(float correctionTemp);
 
         /**
          * @brief Set a correction value to Humidity
-         * @param correctHumidity Correction Humidity percentage
+         * @param correctionHumidity Correction Humidity percentage
          * @note Use values between -100% to 100%.
          * @note Use with caution this correction value.
         */
-        void setCorrectHumidity(float correctHumidity);
+        void setCorrectionHumidity(float correctionHumidity);
 
         /// @brief Set to disable the value correction.
-        /// @note Any call to setCorrectHumidity or setCorrectTemp, will activate the correction again.
+        /// @note Any call to setCorrectionHumidity or setCorrectionTemp, will activate the correction again.
         void setNoCorrection();
 
         /**
          * @brief Get the correction value to Temperature
          * @note By default the correction value is 0.0f
         */
-        float getCorrectTemp();
+        float getCorrectionTemp();
         
         /**
          * @brief Get the correction value to Humidity (%)
          * @note By default the correction value is 0.0f
         */
-        float getCorrectHumidity();
+        float getCorrectionHumidity();
 };
 
 #endif // !THERMO_HYDROMETER_HPP

@@ -3,9 +3,9 @@
  * @brief Provide the Thermo-Hydrometer functionalities.
  * 
  * @author Matheu L. Silvati
- * @version 1.6.9
+ * @version 1.6.10
  * 
- * @date 2023/04/27
+ * @date 2023/04/29
 */
 
 #include "ThermoHydrometer.hpp"
@@ -16,7 +16,7 @@ ThermoHydrometer::ThermoHydrometer(uint8_t dhtPin, uint8_t sensorType, bool useC
 
     this->humidity[0] = this->humidity[1] = this->humidity[2] = 0.0f;
     this->temperature[0] = this->temperature[1] = this->temperature[2] = 0.0f;
-    this->correctValue[0] = this->correctValue[1] = 0.0f;
+    this->correctionValue[0] = this->correctionValue[1] = 0.0f;
 
     this->useCelcius = useCelcius;
     this->useCorrection = false;
@@ -39,17 +39,17 @@ void ThermoHydrometer::updateReadings()
     }
 
     // If correction temperature is applied
-    if (this->correctValue[0] != 0.0f && useCorrection)
+    if (this->correctionValue[0] != 0.0f && useCorrection)
     {
-        this->temperature[1] += this->correctValue[0];
+        this->temperature[1] += this->correctionValue[0];
     }
 
     this->humidity[1] = this->getHumidity();
     
     // If correction humidity is applied
-    if (this->correctValue[1] != 0.0f && useCorrection)
+    if (this->correctionValue[1] != 0.0f && useCorrection)
     {
-        this->humidity[1] += this->correctValue[1];
+        this->humidity[1] += this->correctionValue[1];
     }
 
     // Update the humidity data:
@@ -88,20 +88,20 @@ void ThermoHydrometer::resetData()
         this->temperature[0] = this->temperature[1] = this->temperature[2] = this->getTempF();
     }
 
-    if (this->correctValue[0] != 0.0f && useCorrection)
+    if (this->correctionValue[0] != 0.0f && useCorrection)
     {
-        this->temperature[0] += this->correctValue[0];
-        this->temperature[1] += this->correctValue[0];
-        this->temperature[2] += this->correctValue[0];
+        this->temperature[0] += this->correctionValue[0];
+        this->temperature[1] += this->correctionValue[0];
+        this->temperature[2] += this->correctionValue[0];
     }
 
     this->humidity[0] = this->humidity[1] = this->humidity[2] = this->getHumidity();
     
-    if (this->correctValue[1] != 0.0f && useCorrection)
+    if (this->correctionValue[1] != 0.0f && useCorrection)
     {
-        this->humidity[0] += this->correctValue[1];
-        this->humidity[1] += this->correctValue[1];
-        this->humidity[2] += this->correctValue[1];
+        this->humidity[0] += this->correctionValue[1];
+        this->humidity[1] += this->correctionValue[1];
+        this->humidity[2] += this->correctionValue[1];
     }
 }
 
@@ -115,15 +115,15 @@ void ThermoHydrometer::setTemperatureMeasure(bool setCelcius, bool preserveData)
     if (this->useCelcius != setCelcius)
     {
         // Convert the correction value
-        if (this->correctValue[0] != 0.0f && useCorrection)
+        if (this->correctionValue[0] != 0.0f && useCorrection)
         {
             if (setCelcius)
             {
-                this->correctValue[0] = ((this->correctValue[0] - 32.0f) / 9.0f) * 5.0f;    // C = ((F - 32) / 9) * 5
+                this->correctionValue[0] = ((this->correctionValue[0] - 32.0f) / 9.0f) * 5.0f;    // C = ((F - 32) / 9) * 5
             }
             else    // Convert to Fahrenheit
             {
-                this->correctValue[0] = (this->correctValue[0] * 1.8f) + 32.0f;   // F = (9/5 * C) + 32
+                this->correctionValue[0] = (this->correctionValue[0] * 1.8f) + 32.0f;   // F = (9/5 * C) + 32
             }
         }
 
@@ -188,16 +188,16 @@ float ThermoHydrometer::getHighestHumidity()
     return this->humidity[2];
 }
 
-void ThermoHydrometer::setCorrectTemp(float correctTemp)
+void ThermoHydrometer::setCorrectionTemp(float correctionTemp)
 {
     this->useCorrection = true;
-    this->correctValue[0] = correctTemp;
+    this->correctionValue[0] = correctionTemp;
 }
 
-void ThermoHydrometer::setCorrectHumidity(float correctHumidity)
+void ThermoHydrometer::setCorrectionHumidity(float correctionHumidity)
 {
     this->useCorrection = true;
-    this->correctValue[1] = correctHumidity;
+    this->correctionValue[1] = correctionHumidity;
 }
 
 void ThermoHydrometer::setNoCorrection()
@@ -205,12 +205,12 @@ void ThermoHydrometer::setNoCorrection()
     this->useCorrection = false;
 }
 
-float ThermoHydrometer::getCorrectTemp()
+float ThermoHydrometer::getCorrectionTemp()
 {
-    return this->correctValue[0];
+    return this->correctionValue[0];
 }
 
-float ThermoHydrometer::getCorrectHumidity()
+float ThermoHydrometer::getCorrectionHumidity()
 {
-    return this->correctValue[1];
+    return this->correctionValue[1];
 }
