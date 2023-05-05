@@ -1,11 +1,11 @@
 /** Binary Table Library
  * ------------------------------------
- * @brief Provide an binary table to reduce the quantity of booleans used on project
- * 
- * @details The binary table uses a byte (8-Bits) to store 8 booleans, instead the traditional bool uses 1 byte to store 0 or 1
- * 
+ * @brief Provide an binary table to reduce the quantity of unsigned chareans used on project
+ *
+ * @details The binary table uses a byte (8-Bits) to store 8 unsigned chareans, instead the traditional unsigned char uses 1 byte to store 0 or 1
+ *
  * @author Matheus L. Silvati
- * 
+ *
  * @version 1.0.1
 */
 
@@ -20,7 +20,7 @@ namespace memopt
     /// @note The version 1 has 8 getters and setters to access the binary table
     typedef struct bintable_byte_t
     {
-        unsigned char data;
+        unsigned char data = 0b00000000;
 
         unsigned char getBit0()
         {
@@ -59,14 +59,14 @@ namespace memopt
             return ((data & 0b10000000) >> 0b111);      // Select the bit sector and move it to position 0
         }
 
-        void setBit0(bool bit)
+        void setBit0(unsigned char bit)
         {
             bit = (bit & 0b00000001);       // Make sure just 1 will be set
             data = (data & 0b11111110);     // Clean the bit sector status before set a new value
             data = (data | bit);            // Merge the bit with other bits
         }
 
-        void setBit1(bool bit)
+        void setBit1(unsigned char bit)
         {
             bit = (bit & 0b00000001);       // Make sure just 1 will be set
             bit = (bit << 0b1);             // Move the bit to the right sector
@@ -74,7 +74,7 @@ namespace memopt
             data = (data | bit);            // Merge the bit with other bits
         }
 
-        void setBit2(bool bit)
+        void setBit2(unsigned char bit)
         {
             bit = (bit & 0b00000001);       // Make sure just 1 will be set
             bit = (bit << 0b10);            // Move the bit to the right sector
@@ -82,15 +82,15 @@ namespace memopt
             data = (data | bit);            // Merge the bit with other bits
         }
 
-        void setBit3(bool bit)
+        void setBit3(unsigned char bit)
         {
             bit = (bit & 0b00000001);       // Make sure just 1 will be set
             bit = (bit << 0b11);            // Move the bit to the right sector
             data = (data & 0b11110111);     // Clean the bit sector status before set a new value
             data = (data | bit);            // Merge the bit with other bits
         }
-        
-        void setBit4(bool bit)
+
+        void setBit4(unsigned char bit)
         {
             bit = (bit & 0b00000001);       // Make sure just 1 will be set
             bit = (bit << 0b100);           // Move the bit to the right sector
@@ -98,7 +98,7 @@ namespace memopt
             data = (data | bit);            // Merge the bit with other bits
         }
 
-        void setBit5(bool bit)
+        void setBit5(unsigned char bit)
         {
             bit = (bit & 0b00000001);       // Make sure just 1 will be set
             bit = (bit << 0b101);           // Move the bit to the right sector
@@ -106,7 +106,7 @@ namespace memopt
             data = (data | bit);            // Merge the bit with other bits
         }
 
-        void setBit6(bool bit)
+        void setBit6(unsigned char bit)
         {
             bit = (bit & 0b00000001);       // Make sure just 1 will be set
             bit = (bit << 0b110);           // Move the bit to the right sector
@@ -114,7 +114,7 @@ namespace memopt
             data = (data | bit);            // Merge the bit with other bits
         }
 
-        void setBit7(bool bit)
+        void setBit7(unsigned char bit)
         {
             bit = (bit & 0b00000001);       // Make sure just 1 will be set
             bit = (bit << 0b111);           // Move the bit to the right sector
