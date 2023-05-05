@@ -1,11 +1,11 @@
 /** Byte Nibble Table Library
  * ------------------------------------
  * @brief Provide an nibble level data control to store two diferent datas in one byte
- * 
+ *
  * @author Matheus L. Silvati
- * 
+ *
  * @version 1.2.0
- * 
+ *
  * @note This library don't define the byte type, but uses the unsigned char as a byte
 */
 
@@ -16,9 +16,10 @@
 
 namespace memopt
 {
+    /// @brief Provide control to nibbles in a byte to store two datas with values 0 to FF
     typedef struct nibble_t
     {
-        unsigned char data;
+        unsigned char data = 0b00000000;
 
         /// @brief Get highest nibble in data byte
         /// @return A nibble transformed in unsigned char (1 byte)
