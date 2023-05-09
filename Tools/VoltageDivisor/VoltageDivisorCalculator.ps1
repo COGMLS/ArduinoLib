@@ -22,11 +22,11 @@
 .LINK
     No link available
 .EXAMPLE
-    VoltageDivCalc.ps1 -R0 100e3 -Vi = 4.96 -RN = (10e3, 25e3, 50e3, 75e3, 150e3, 300e3, 450e3, 600e3, 750e3, 900e3)
+    VoltageDivCalc.ps1 -R0 100e3 -Vi 4.96 -RN (10e3, 25e3, 50e3, 75e3, 150e3, 300e3, 450e3, 600e3, 750e3, 900e3)
     
     Calculate the voltage divisor and the analog readings with R0 = 100kΩ, Vi = 4.96 V to resistors: 10k, 25kΩ, 50kΩ, 75kΩ, 150kΩ, 300kΩ, 450kΩ, 600kΩ, 750kΩ, 900kΩ.
 .EXAMPLE
-    VoltageDivCalc.ps1 -R0 100e3 -Vi = 4.96 -AN = (50, 100, 220, 330, 440, 530, 620, 750, 820, 900)
+    VoltageDivCalc.ps1 -R0 100e3 -Vi 4.96 -AN (50, 100, 220, 330, 440, 530, 620, 750, 820, 900)
     
     Calculate the voltage divisor and the N resistors associated with R0 = 100kΩ, Vi = 4.96 V to get the analog read: 50, 100, 220, 330, 440, 530, 620, 750, 820, 900.
 #>
@@ -76,7 +76,12 @@ Param
     # Use voltage prefix (y,z,a,f,p,n,u,m,c,d,da,h,k,M,G,T,P,E,Z,Y). Note: da - deca, expoent = 1. Note: If send no char/compatible char, will use as 'da'.
     [Parameter(Position=7,Mandatory=$false,DontShow=$true)]
     [char]
-    $VoltagePrefix
+    $VoltagePrefix,
+
+    # Use GND reference
+    [Parameter(Position=8, Mandatory=$false)]
+    [switch]
+    $UseGNDRef
 )
 
 [double]$UnitVref = [System.Math]::Round($Vref / ([System.Math]::Pow(2, $BitPrecision)), $VrefPrecision)
@@ -105,8 +110,16 @@ class VoltageDivisorClass
 
     [void]Calculate()
     {
-        $this.VoltageOut = ($this.ResistorValue / ($this.MainResistor + $this.ResistorValue)) * $this.VoltageIn
-        $this.AnalogRead = ($this.VoltageOut / $this.UnitVoltageReference)
+        if ($Script:UseGNDRef)
+        {
+            $this.VoltageOut = $this.VoltageIn - (($this.ResistorValue / ($this.MainResistor + $this.ResistorValue)) * $this.VoltageIn)
+            $this.AnalogRead = ([System.Math]::Pow(2, $Script:BitPrecision)) - ($this.VoltageOut / $this.UnitVoltageReference)
+        }
+        else
+        {
+            $this.VoltageOut = ($this.ResistorValue / ($this.MainResistor + $this.ResistorValue)) * $this.VoltageIn
+            $this.AnalogRead = ($this.VoltageOut / $this.UnitVoltageReference)
+        }
     }
 }
 
@@ -134,8 +147,15 @@ class AnalogReadClass
 
     [void]Calculate()
     {
-        $this.VoltageOut = ($this.AnalogRead * $this.UnitVoltageReference)
-
+        if ($Script:UseGNDRef)
+        {
+            $this.VoltageOut = $this.VoltageIn - ($this.AnalogRead * $this.UnitVoltageReference)
+        }
+        else
+        {
+            $this.VoltageOut = ($this.AnalogRead * $this.UnitVoltageReference)
+        }
+        
         $this.ResistorValue = ($this.VoltageOut * $this.MainResistor) / ($this.VoltageIn - $this.VoltageOut)
     }
 }
