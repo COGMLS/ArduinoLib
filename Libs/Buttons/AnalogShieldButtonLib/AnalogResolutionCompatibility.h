@@ -3,9 +3,9 @@
  * @brief Provide simple way to determinate what button was pressed in an analog shield button, detecting the analog input with different resistances associated with each button.
  * 
  * @anchor Matheu L. Silvati
- * @version 1.0.0
+ * @version 1.1.0
  * 
- * @date 2023/04/01
+ * @date 2023/05/09
 */
 
 #pragma once
@@ -13,13 +13,14 @@
 #ifndef ANALOG_RESOLUTION_COMPATIBILITY_HPP
 #define ANALOG_RESOLUTION_COMPATIBILITY_HPP
 
-typedef enum AnalogResolution : unsigned short
+enum AnalogResolution : unsigned short
 {
     BACKWARD_COMPATIBILITY = 10,
     _12BITS_COMPATIBILITY = 12,
     _16BITS_COMPATIBILITY = 16,
     _32BITS_COMPATIBILITY = 32
-};
+}
+typedef AnalogResolution;
 
 /**
  * @brief Convert the AnalogResolution enumerator to integer
