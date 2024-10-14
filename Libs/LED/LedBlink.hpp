@@ -84,7 +84,7 @@ namespace ard
              * timer is in milliseconds.
              * 
              * @param[in] blinkTimer Vector of integers representing the timer delay in milliseconds.
-             * @note The actual storaged vector will be replaced.
+             * @note The actual stored vector will be replaced.
              * 
              * @param[in] blinkTimerSize Size of the new vector.
              * 

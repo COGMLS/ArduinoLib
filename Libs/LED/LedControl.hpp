@@ -21,8 +21,8 @@ namespace ard
      * 
      * @short Base class to control LED's on Arduino boards.
      * 
-     * @details This class can provide basic functionallity
-     * or be used for inheranced classes.
+     * @details This class can provide basic functionality
+     * or be used for inherence classes.
     */
     class LedControl
     {
@@ -35,13 +35,13 @@ namespace ard
         public:
             /**
              * @fn LedControl()
-             * @short Empty constructor for LedControl class, used for inheranced classes.
+             * @short Empty constructor for LedControl class, used for inherence classes.
             */
             LedControl();
 
             /**
              * @fn LedControl(int ledPin)
-             * @short Contructor for basic LED functionallity, to turn ON/OFF.
+             * @short Constructor for basic LED functionality, to turn ON/OFF.
              * @param[in] ledPin Define the LED's pin number.
             */
            LedControl(int ledPin);
@@ -55,7 +55,6 @@ namespace ard
             /**
              * @fn void setState(bool state)
              * @short Set the LED to ON with true or OFF with false.
-             * @return This function dosn't return.
             */
            void setState(bool state);
 

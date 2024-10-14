@@ -24,7 +24,7 @@ void LedBlink::ledBlink()
     this->changeLedStatus();
 }
 
-// Contructors and destructor:
+// Constructors and destructor:
 LedBlink::LedBlink(int ledPin)
 {
     this->ledPin = ledPin;
@@ -86,7 +86,7 @@ LedBlink::~LedBlink()
 
 // Getters:
 
-// Vefiry if the LED is blinking
+// Verify if the LED is blinking
 bool LedBlink::isBlinking()
 {
     if(this->ledBlinking && this->ledStatus)
@@ -104,7 +104,7 @@ int LedBlink::getDelayBlinking()
     return this->ledDelay;
 }
 
-int LedBlink::getlMultiBlinkInterval()
+int LedBlink::getMultiBlinkInterval()
 {
     return this->ledMultiBlinkInterval;
 }
@@ -116,7 +116,7 @@ enum ledBlinkStyle LedBlink::getBlinkStyle()
 
 // Setters:
 
-void LedBlink::setDelayBliking(int ledDelay)
+void LedBlink::setDelayBlinking(int ledDelay)
 {
     this->ledDelay = ledDelay;
 }
