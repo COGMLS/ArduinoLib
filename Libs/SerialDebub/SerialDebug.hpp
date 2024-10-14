@@ -23,32 +23,32 @@ class SerialDebugger
 
         /// @brief Print Debug Informations to Serial
         /// @param title Title of the value
-        /// @param val Value to exibit
+        /// @param val Value to exhibit
         void printDebugInfo(const char title[], int val);
 
         /// @brief Print Debug Informations to Serial
         /// @param title Title of the value
-        /// @param val Value to exibit
+        /// @param val Value to exhibit
         void printDebugInfo(const char title[], unsigned int val);
 
         /// @brief Print Debug Informations to Serial
         /// @param title Title of the value
-        /// @param val Value to exibit
+        /// @param val Value to exhibit
         void printDebugInfo(const char title[], long val);
 
         /// @brief Print Debug Informations to Serial
         /// @param title Title of the value
-        /// @param val Value to exibit
+        /// @param val Value to exhibit
         void printDebugInfo(const char title[], unsigned long val);
 
         /// @brief Print Debug Informations to Serial
         /// @param title Title of the value
-        /// @param val Value to exibit
+        /// @param val Value to exhibit
         void printDebugInfo(const char title[], float val, unsigned short precision = 2);
 
         /// @brief Print Debug Informations to Serial
         /// @param title Title of the value
-        /// @param val Value to exibit
+        /// @param val Value to exhibit
         /// @param precision Define the precision
         void printDebugInfo(const char title[], double val, unsigned short precision = 2);
 

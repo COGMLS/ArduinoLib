@@ -94,7 +94,7 @@ void SerialDebugger::printNibbleDebugInfo(const char title[], unsigned char data
 
 void SerialDebugger::printNibbleAux(unsigned char data, bool printAsNibble, bool highestNibble, bool printHex)
 {
-    // Extract the nible data
+    // Extract the nibble data
     if (highestNibble)
     {
         data = ((data & 0b11110000) >> 0b100);
