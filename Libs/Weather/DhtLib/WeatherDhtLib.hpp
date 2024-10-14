@@ -1,9 +1,9 @@
 /** DHT Weather Lib
  * ------------------------------------
- * @brief Extentd the DHT sensors functionalities.
+ * @brief Extended the DHT sensors functionalities.
  * 
- * @anchor Matheu L. Silvati
- * @version 1.1.5
+ * @anchor Matheus L. Silvati
+ * @version 1.1.6
  * 
  * @date 2023/03/23
 */
@@ -51,13 +51,13 @@ class WeatherDhtLib
         ~WeatherDhtLib();
 
         /**
-         * @brief Get the sensor temperature in Celcius
+         * @brief Get the sensor temperature in Celsius
         */
         float getTempC();
 
         /**
          * @brief Get the sensor temperature in Fahrenheit
-         * @note This function call the internal DHT function convertion and uses double data type, which is not optimized to Arduino architecture.
+         * @note This function call the internal DHT function conversion and uses double data type, which is not optimized to Arduino architecture.
         */
         float getTempF();
 

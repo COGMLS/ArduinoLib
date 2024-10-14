@@ -2,10 +2,10 @@
  * ------------------------------------
  * @brief Provide the Thermo-Hydrometer functionalities.
  * 
- * @author Matheu L. Silvati
- * @version 1.5.6
+ * @author Matheus L. Silvati
+ * @version 1.6.11
  * 
- * @date 2023/04/27
+ * @date 2023/04/29
 */
 
 #pragma once
@@ -31,48 +31,50 @@ class ThermoHydrometer : WeatherDhtLib
         /**
          * @brief Correction value: 0 - Temperature (based on current measure unit), 1 - Humidity (in percentage)
         */
-        float correctValue[2];
+        float correctionValue[2];
         
-        // Define if is in Celcius or in Fahrenheit
-        bool useCelcius;
-        
+        // Define if is in Celsius or in Fahrenheit
+        bool useCelsius;
+
+        // Use correction values
+        bool useCorrection;
     public:
         /**
          * @brief Create an object to manage the Thermo-Hydrometer data and sensor.
          * @param dhtPin Define the DHT sensor pin to setup.
-         * @param useCelcius Determinate if is using the temperature is in Celcius or in Fahrenheit. The default parameter value is true for Celcius.
+         * @param useCelsius Determinate if is using the temperature is in Celsius or in Fahrenheit. The default parameter value is true for Celsius.
         */
-        ThermoHydrometer(uint8_t dhtPin, uint8_t sensorType, bool useCelcius = true);
+        ThermoHydrometer(uint8_t dhtPin, uint8_t sensorType, bool useCelsius = true);
         ~ThermoHydrometer();
 
         /**
-         * @brief Update the storaged data and set the new lowest and highest values.
+         * @brief Update the stored data and set the new lowest and highest values.
         */
         void updateReadings();
 
         /**
-         * @brief Initialyze the Thermo-Hydrometer object.
-         * @note This is a mitigation for a bad initialyzation inside the constructor starting with a first reading.
+         * @brief Initialize the Thermo-Hydrometer object.
+         * @note This is a mitigation for a bad initialization inside the constructor starting with a first reading.
         */
         void init();
 
         /**
-         * @brief Reset the storaged data.
+         * @brief Reset the stored data.
         */
         void resetData();
 
         /**
          * @brief Change the temperature measure unit.
-         * @param setCelcius Define if is in Celcius (true) or Fahrenheit (false)
-         * @param preserveData If true, it will convert the storaged data to preserve the lowest and highest values.
-         * @note After change the measure unit, the data storaged will be update to the new measure unit if preserveData is true. Otherwise the storaged data will be reseted.
+         * @param setCelsius Define if is in Celsius (true) or Fahrenheit (false)
+         * @param preserveData If true, it will convert the stored data to preserve the lowest and highest values.
+         * @note After change the measure unit, the data stored will be update to the new measure unit if preserveData is true. Otherwise the stored data will be reset.
         */
-        void setTemperatureMeasure(bool setCelcius, bool preserveData = true);
+        void setTemperatureMeasure(bool setCelsius, bool preserveData = true);
 
         /**
          * @brief Check the temperature measure unit.
         */
-        bool isCelcius();
+        bool isCelsius();
 
         /**
          * @brief Get the current humidity data from last update reading
@@ -109,30 +111,34 @@ class ThermoHydrometer : WeatherDhtLib
 
         /**
          * @brief Set a correction value to Temperature.
-         * @param correctTemp Correction Temperature on current temperature measure unit
+         * @param correctionTemp Correction Temperature on current temperature measure unit
          * @note Use with caution this correction value.
         */
-        void setCorrectTemp(float correctTemp);
+        void setCorrectionTemp(float correctionTemp);
 
         /**
          * @brief Set a correction value to Humidity
-         * @param correctHumidity Correction Humidity percentage
+         * @param correctionHumidity Correction Humidity percentage
          * @note Use values between -100% to 100%.
          * @note Use with caution this correction value.
         */
-        void setCorrectHumidity(float correctHumidity);
+        void setCorrectionHumidity(float correctionHumidity);
+
+        /// @brief Set to disable the value correction.
+        /// @note Any call to setCorrectionHumidity or setCorrectionTemp, will activate the correction again.
+        void setNoCorrection();
 
         /**
          * @brief Get the correction value to Temperature
          * @note By default the correction value is 0.0f
         */
-        float getCorrectTemp();
+        float getCorrectionTemp();
         
         /**
          * @brief Get the correction value to Humidity (%)
          * @note By default the correction value is 0.0f
         */
-        float getCorrectHumidity();
+        float getCorrectionHumidity();
 };
 
 #endif // !THERMO_HYDROMETER_HPP
