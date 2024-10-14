@@ -1,3 +1,13 @@
+/** DHT Weather Lib
+ * ------------------------------------
+ * @brief Extentd the DHT sensors functionalities.
+ * 
+ * @anchor Matheu L. Silvati
+ * @version 1.1.5
+ * 
+ * @date 2023/03/23
+*/
+
 #include "WeatherDhtLib.hpp"
 
 WeatherDhtLib::WeatherDhtLib()
@@ -30,7 +40,7 @@ float WeatherDhtLib::getTempC()
 
 float WeatherDhtLib::getTempF()
 {
-    return this->dhtSensor->readTemperature() * 33.8f;
+    return this->dhtSensor->readTemperature(true);
 }
 
 float WeatherDhtLib::getHumidity()
