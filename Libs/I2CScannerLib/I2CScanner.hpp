@@ -4,7 +4,7 @@
  * 
  * @author Matheus L. Silvati
  * 
- * @version 0.3.2a
+ * @version 0.3.3a
  * ------------------------------------
 */
 
@@ -49,7 +49,7 @@ class I2CScanner
         void scan();
 
         // Get the number of devices founded
-        int getNnumberDevices();
+        int getNumberDevices();
 
         // Get the number of error founded
         int getNumberErrors();

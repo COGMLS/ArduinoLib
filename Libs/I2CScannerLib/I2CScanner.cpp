@@ -74,8 +74,8 @@ void I2CScanner::scan()
 
         /**
          * 0 - Success
-         * 2 - Sended address, nothing receaved
-         * 3 - Sended data, nothing receaved
+         * 2 - Sended address, nothing received
+         * 3 - Sended data, nothing received
          * X - Other error
         */
 
@@ -92,7 +92,7 @@ void I2CScanner::scan()
     }
 }
 
-int I2CScanner::getNnumberDevices()
+int I2CScanner::getNumberDevices()
 {
     return this->devicesFounded;
 }
