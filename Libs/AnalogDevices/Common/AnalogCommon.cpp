@@ -3,7 +3,7 @@
 ard::AnalogCommon::AnalogCommon::AnalogCommon(int analogPin)
 {
     this->analogPin = analogPin;
-    this->lastReadedVal = -1;
+    this->lastReadVal = -1;
 }
 
 ard::AnalogCommon::AnalogCommon::~AnalogCommon()
@@ -13,25 +13,25 @@ ard::AnalogCommon::AnalogCommon::~AnalogCommon()
 
 int ard::AnalogCommon::AnalogCommon::getLastRead()
 {
-    return this->lastReadedVal;
+    return this->lastReadVal;
 }
 
 int ard::AnalogCommon::AnalogCommon::getLastRead(int out_max, int out_min)
 {
-    this->lastReadedVal = analogRead(this->analogPin);
-    return (this->lastReadedVal - 0) * (out_max - out_min) / (1023 - 0) + out_min;
+    this->lastReadVal = analogRead(this->analogPin);
+    return (this->lastReadVal - 0) * (out_max - out_min) / (1023 - 0) + out_min;
 }
 
 int ard::AnalogCommon::AnalogCommon::read()
 {
-    this->lastReadedVal = analogRead(this->analogPin);
-    return this->lastReadedVal;
+    this->lastReadVal = analogRead(this->analogPin);
+    return this->lastReadVal;
 }
 
 int ard::AnalogCommon::AnalogCommon::read(int out_max, int out_min = 0)
 {
-    this->lastReadedVal = analogRead(this->analogPin);
-    return (this->lastReadedVal - 0) * (out_max - out_min) / (1023 - 0) + out_min;
+    this->lastReadVal = analogRead(this->analogPin);
+    return (this->lastReadVal - 0) * (out_max - out_min) / (1023 - 0) + out_min;
 }
 
 void ard::AnalogCommon::write(int val)

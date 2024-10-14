@@ -23,8 +23,8 @@ namespace ard
             /// @brief Analog device pin number
             int analogPin;
 
-            /// @brief Buffer to access the last data readed
-            int lastReadedVal;
+            /// @brief Buffer to access the last data read
+            int lastReadVal;
         public:
             /**
              * @fn AnalogCommon(int analogPin)
@@ -105,17 +105,17 @@ namespace ard
             /**
              * @fn int getLastRead()
              * 
-             * @short Read the last value storaged on buffer.
+             * @short Read the last value stored on buffer.
              * 
-             * @return Return the storaged buffer from last read.
+             * @return Return the stored buffer from last read.
             */
             int getLastRead();
 
             /**
              * @overload int getLastRead()
              * 
-             * @short Read the last value storaged on buffer, and
-             * tranform to a custom range.
+             * @short Read the last value stored on buffer, and
+             * transform to a custom range.
              * 
              * @details Read the last value on buffer from the last
              * read and return the range.
@@ -123,7 +123,7 @@ namespace ard
              * @param[in] out_max Maximum output range.
              * @param[in] out_min Minimum output range.
              * 
-             * @return Return the storaged buffer from last read on
+             * @return Return the stored buffer from last read on
              * defined range output.
             */
             int getLastRead(int out_max, int out_min);
