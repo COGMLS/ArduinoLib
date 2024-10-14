@@ -44,7 +44,7 @@ bool DisplayControl::getBacklight()
 }
 
 // Get the cursor coordinates structure
-struct DisplayContronlCursor DisplayControl::getCursorCoordinates()
+struct DisplayControlCursor DisplayControl::getCursorCoordinates()
 {
     return this->cursorCoordinates;
 }
@@ -74,7 +74,10 @@ void DisplayControl::setCursorCoordinates(int x, int y)
 }
 
 // Define the screen buffer;
-bool DisplayControl::setScreenBuffer(char* buffer);
+bool DisplayControl::setScreenBuffer(char* buffer)
+{
+    return true;
+}
 
 // Other controls:
 void DisplayControl::switchBacklight()

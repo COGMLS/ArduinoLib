@@ -24,7 +24,7 @@ class CustomLCD
         LiquidCrystal* lcd = nullptr;
         int backlight;
 
-        /// @brief Colluns of lcd
+        /// @brief Columns of lcd
         int cols;
         /// @brief Rows of lcd
         int rows;
@@ -33,7 +33,7 @@ class CustomLCD
          * Variables available to control the Custom LCD display:
         */
 
-        // @brief Control the autoscroll on LCD display
+        // @brief Control the auto scroll on LCD display
         bool autoscroll;
 
         // @brief Control the writing
@@ -42,7 +42,7 @@ class CustomLCD
         // @brief Control the cursor blinking
         bool cursorBlink;
 
-        // @brief Control if cursor if active/deactive
+        // @brief Control if cursor if active/deactivate
         bool cursorState;
 
         // @brief Control the display state
