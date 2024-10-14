@@ -4,10 +4,10 @@
 #define SYMBOL_TEMPERATURE_DISPLAY_H
 
 /**
- * @short Celcius symbol 1
+ * @short Celsius symbol 1
  * @version 1
 */
-static byte celcius1Symbol[8] = 
+static byte celsius1Symbol[8] = 
 {
     0b01000,
     0b10100,
@@ -20,10 +20,10 @@ static byte celcius1Symbol[8] =
 };
 
 /**
- * @short Celcius symbol 2
+ * @short Celsius symbol 2
  * @version 2
 */
-static byte celcius2Symbol[8] = 
+static byte celsius2Symbol[8] = 
 {
     0b11000,
     0b11011,
@@ -36,10 +36,10 @@ static byte celcius2Symbol[8] =
 };
 
 /**
- * @short Celcius symbol 3
+ * @short Celsius symbol 3
  * @version 3
 */
-static byte celcius3Symbol[8] = 
+static byte celsius3Symbol[8] = 
 {
     0b01000,
     0b10100,
@@ -52,10 +52,10 @@ static byte celcius3Symbol[8] =
 };
 
 /**
- * @short Celcius symbol 4
+ * @short Celsius symbol 4
  * @version 4
 */
-static byte celcius4Symbol[8] = 
+static byte celsius4Symbol[8] = 
 {
     0b01000,
     0b10100,

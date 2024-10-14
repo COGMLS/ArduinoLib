@@ -3,7 +3,7 @@
 #ifndef ARDUINO_DISPLAY_CONTROL_HPP
 #define ARDUINO_DISPLAY_CONTROL_HPP
 
-struct DisplayContronlCursor
+struct DisplayControlCursor
 {
     int cursorCoordinatesX;             // Actual cursor coordinates on X axis
     int cursorCoordinatesY;             // Actual cursor coordinates on Y axis
@@ -15,20 +15,20 @@ class DisplayControl
         void* displayController = nullptr;                      // Generic pointer to display controller
         bool backlightStatus;                                   // Backlight status
         char*** screenBuffer = nullptr;                         // Pointer to a custom screen buffer used to keep updated the content
-        struct DisplayContronlCursor cursorCoordinates;         // Actual cursor coordinates
-        struct DisplayContronlCursor maxCursorCoordinates;      // Maximum cursor coordinates to navegate in screen buffer
+        struct DisplayControlCursor cursorCoordinates;         // Actual cursor coordinates
+        struct DisplayControlCursor maxCursorCoordinates;      // Maximum cursor coordinates to navigate in screen buffer
 
         // Protected setters:
         virtual void setMaxCursorCoordinates(int x, int y);     // Only for inheritance classes.
     public:
-        // Contructors and destructor:
+        // Constructors and destructor:
         DisplayControl();
         DisplayControl(void* displayController, const int maxCursorCoordinatesX, const int maxCursorCoordinatesY, bool backlightStatus);
         ~DisplayControl();
 
         // Getters:
         bool getBacklight();
-        struct DisplayContronlCursor getCursorCoordinates();
+        struct DisplayControlCursor getCursorCoordinates();
         char*** getScreenBuffer();
 
         // Setters:
