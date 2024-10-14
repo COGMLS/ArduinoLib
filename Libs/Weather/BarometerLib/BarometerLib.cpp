@@ -1,11 +1,11 @@
 #include "BarometerLib.hpp"
 
-BarometerLib::BarometerLib::BarometerLib(SENSOR_TYPE sensorType, void* sensorObj, bool useCelcius, bool useMeters)
+BarometerLib::BarometerLib::BarometerLib(SENSOR_TYPE sensorType, void* sensorObj, bool useCelsius, bool useMeters)
 {
     this->sensorType = sensorType;
     this->sensorObj = sensorObj;
 
-    this->useCelcius = useCelcius;
+    this->useCelsius = useCelsius;
     this->useMeters = useMeters;
 
     this->altitude[0] = this->altitude[1] = this->altitude[2] = 0.0f;

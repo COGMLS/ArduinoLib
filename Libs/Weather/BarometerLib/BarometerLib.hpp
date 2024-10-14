@@ -1,10 +1,10 @@
 /** Generic Barometric Sensor Data Library
  * ----------------------------------------------
- * @brief Controls data readed from barometric sensor, like BMP 085/180/280. Using generic calls from storaged address in a void pointer.
+ * @brief Controls data read from barometric sensor, like BMP 085/180/280. Using generic calls from stored address in a void pointer.
  * 
  * @author Matheus L. Silvati
  * 
- * @version 0.0.2
+ * @version 0.1.0
  * 
  * @note In Development
 */
@@ -61,8 +61,8 @@ namespace BarometerLib
             // Temperature data: 0 - Lowest, 1 - Current, 2 - Highest
             float temperature[3];
 
-            // Use Celcius measure
-            bool useCelcius;
+            // Use Celsius measure
+            bool useCelsius;
 
             // Use meters to measure
             bool useMeters;
@@ -71,7 +71,7 @@ namespace BarometerLib
             PRESSURE_MEASURE pressureUnit;
         public:
 
-            BarometerLib(SENSOR_TYPE snesorType, void* sensorObj, bool useCelcius = true, bool useMeters = true);
+            BarometerLib(SENSOR_TYPE sensorType, void* sensorObj, bool useCelsius = true, bool useMeters = true);
             ~BarometerLib();
 
             /// @brief Get the sensor void pointer.
@@ -79,13 +79,13 @@ namespace BarometerLib
             void* getSensor();
 
             /// @brief Initialize the sensor
-            /// @return TRUE if the initialyzation was successful.
+            /// @return TRUE if the initialization was successful.
             bool init();
 
-            /// @brief Update the storaged data
+            /// @brief Update the stored data
             void updateReadings();
 
-            /// @brief Reset the storaged data.
+            /// @brief Reset the stored data.
             void resetData();
 
             /// @brief Get the lowest altitude value
@@ -121,8 +121,8 @@ namespace BarometerLib
             /// @brief Get the string pressure measure
             char* getStrPressureMeasure();
             
-            /// @brief Check if is in Celcius (true) or Fahrenheit (false)
-            bool isCelcius();
+            /// @brief Check if is in Celsius (true) or Fahrenheit (false)
+            bool isCelsius();
 
             /// @brief Check if is in Meters (true) or Feet (false) 
             bool isMeters();
@@ -130,26 +130,26 @@ namespace BarometerLib
             /**
              * @brief Change the altitude measure unit.
              * @param setMeters Define if is in Meters (true) or Feet (false)
-             * @param preserveData If true, it will convert the storaged data to preserve the lowest and highest values.
-             * @note After change the measure unit, the data storaged will be update to the new measure unit if preserveData is true. Otherwise the storaged data will be reseted.
+             * @param preserveData If true, it will convert the stored data to preserve the lowest and highest values.
+             * @note After change the measure unit, the data stored will be update to the new measure unit if preserveData is true. Otherwise the stored data will be reset.
             */
             void setAltitudeMeasure(bool setMeters, bool preserveData = true);
 
             /**
              * @brief Change the pressure measure unit.
              * @param setPressure Define the pressure unit.
-             * @param preserveData If true, it will convert the storaged data to preserve the lowest and highest values.
-             * @note After change the measure unit, the data storaged will be update to the new measure unit if preserveData is true. Otherwise the storaged data will be reseted.
+             * @param preserveData If true, it will convert the stored data to preserve the lowest and highest values.
+             * @note After change the measure unit, the data stored will be update to the new measure unit if preserveData is true. Otherwise the stored data will be reset.
             */
             void setPressureMeasure(PRESSURE_MEASURE setPressure, bool preserveData = true);
 
             /**
              * @brief Change the temperature measure unit.
-             * @param setCelcius Define if is in Celcius (true) or Fahrenheit (false)
-             * @param preserveData If true, it will convert the storaged data to preserve the lowest and highest values.
-             * @note After change the measure unit, the data storaged will be update to the new measure unit if preserveData is true. Otherwise the storaged data will be reseted.
+             * @param setCelsius Define if is in Celsius (true) or Fahrenheit (false)
+             * @param preserveData If true, it will convert the stored data to preserve the lowest and highest values.
+             * @note After change the measure unit, the data stored will be update to the new measure unit if preserveData is true. Otherwise the stored data will be reset.
             */
-            void setTemperatureMeasure(bool setCelcius, bool preserveData = true);
+            void setTemperatureMeasure(bool setCelsius, bool preserveData = true);
 
             /// @brief Define the Sea Level for altitude measure
             /// @param seaLevel Sea Level in meters

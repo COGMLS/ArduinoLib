@@ -1,6 +1,6 @@
 #include "MathWeatherLib.hpp"
 
-float convertCelcius(float temperature, bool fromKelvin)
+float convertCelsius(float temperature, bool fromKelvin)
 {
     if (fromKelvin)
     {

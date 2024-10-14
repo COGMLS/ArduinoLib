@@ -2,15 +2,15 @@
  * ------------------------------------
  * @brief Provide the Thermo-Hydrometer functionalities.
  * 
- * @author Matheu L. Silvati
- * @version 1.6.10
+ * @author Matheus L. Silvati
+ * @version 1.6.11
  * 
  * @date 2023/04/29
 */
 
 #include "ThermoHydrometer.hpp"
 
-ThermoHydrometer::ThermoHydrometer(uint8_t dhtPin, uint8_t sensorType, bool useCelcius)
+ThermoHydrometer::ThermoHydrometer(uint8_t dhtPin, uint8_t sensorType, bool useCelsius)
 {
     this->setWeatherDhtLib(dhtPin, sensorType);
 
@@ -18,7 +18,7 @@ ThermoHydrometer::ThermoHydrometer(uint8_t dhtPin, uint8_t sensorType, bool useC
     this->temperature[0] = this->temperature[1] = this->temperature[2] = 0.0f;
     this->correctionValue[0] = this->correctionValue[1] = 0.0f;
 
-    this->useCelcius = useCelcius;
+    this->useCelsius = useCelsius;
     this->useCorrection = false;
 }
 
@@ -29,7 +29,7 @@ ThermoHydrometer::~ThermoHydrometer()
 
 void ThermoHydrometer::updateReadings()
 {
-    if (this->useCelcius)
+    if (this->useCelsius)
     {
         this->temperature[1] = this->getTempC();
     }
@@ -79,7 +79,7 @@ void ThermoHydrometer::updateReadings()
 
 void ThermoHydrometer::resetData()
 {
-    if (this->useCelcius)
+    if (this->useCelsius)
     {
         this->temperature[0] = this->temperature[1] = this->temperature[2] = this->getTempC();
     }
@@ -110,14 +110,14 @@ void ThermoHydrometer::init()
     this->resetData();
 }
 
-void ThermoHydrometer::setTemperatureMeasure(bool setCelcius, bool preserveData)
+void ThermoHydrometer::setTemperatureMeasure(bool setCelsius, bool preserveData)
 {
-    if (this->useCelcius != setCelcius)
+    if (this->useCelsius != setCelsius)
     {
         // Convert the correction value
         if (this->correctionValue[0] != 0.0f && useCorrection)
         {
-            if (setCelcius)
+            if (setCelsius)
             {
                 this->correctionValue[0] = ((this->correctionValue[0] - 32.0f) / 9.0f) * 5.0f;    // C = ((F - 32) / 9) * 5
             }
@@ -127,13 +127,13 @@ void ThermoHydrometer::setTemperatureMeasure(bool setCelcius, bool preserveData)
             }
         }
 
-        // Convert the storaged data
+        // Convert the stored data
         if (preserveData)
         {
             for (int i = 0; i < 3; i++)
             {
-                // Convert to Celcius
-                if (setCelcius)
+                // Convert to Celsius
+                if (setCelsius)
                 {
                     this->temperature[i] = ((this->temperature[i] - 32.0f) / 9.0f) * 5.0f;    // C = ((F - 32) / 9) * 5
                 }
@@ -143,19 +143,19 @@ void ThermoHydrometer::setTemperatureMeasure(bool setCelcius, bool preserveData)
                 }
             }
 
-            this->useCelcius = setCelcius;
+            this->useCelsius = setCelsius;
         }
         else
         {
-            this->useCelcius = setCelcius;
+            this->useCelsius = setCelsius;
             this->resetData();
         }
     }
 }
 
-bool ThermoHydrometer::isCelcius()
+bool ThermoHydrometer::isCelsius()
 {
-    return this->useCelcius;
+    return this->useCelsius;
 }
 
 float ThermoHydrometer::getCurrentTemperature()
