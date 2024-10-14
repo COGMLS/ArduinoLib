@@ -9,7 +9,7 @@ class LedControl
         bool ledStatus;
         int ledPin;
     public:
-        // Contructor and destructor:
+        // Constructor and destructor:
         LedControl();
         ~LedControl();
 

@@ -28,7 +28,7 @@ class LedBlink : public LedControl
         void changeLedStatus();             // Make the change ON or OFF
         void ledBlink();                    // Switch ON and OFF the LED with the delay
     public:
-        // Contructors and destructor:
+        // Constructors and destructor:
         LedBlink(int ledPin);
         LedBlink(int ledPin, int ledDelay);
         LedBlink(int ledPin, enum ledBlinkStyle blinkStyle);
@@ -38,13 +38,13 @@ class LedBlink : public LedControl
         ~LedBlink();
 
         // Getters:
-        bool isBlinking();                  // Vefiry if the LED is blinking
+        bool isBlinking();                  // Verify if the LED is blinking
         int getDelayBlinking();
-        int getlMultiBlinkInterval();
+        int getMultiBlinkInterval();
         enum ledBlinkStyle getBlinkStyle();
 
         // Setters:
-        void setDelayBliking(int ledDelay);
+        void setDelayBlinking(int ledDelay);
         void setMultiBlinkInterval(int ledMultiBlinkInterval);
         void setBlinkStyle(enum ledBlinkStyle blinkStyle);
         void setBlinkStyle(enum ledBlinkStyle blinkStyle, int ledDelay);
