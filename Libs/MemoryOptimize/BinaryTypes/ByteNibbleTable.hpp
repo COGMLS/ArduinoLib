@@ -1,6 +1,6 @@
 /** Byte Nibble Table Library
  * ------------------------------------
- * @brief Provide an nibble level data control to store two diferent datas in one byte
+ * @brief Provide an nibble level data control to store two different data in one byte
  *
  * @author Matheus L. Silvati
  *
@@ -16,7 +16,7 @@
 
 namespace memopt
 {
-    /// @brief Provide control to nibbles in a byte to store two datas with values 0 to FF
+    /// @brief Provide control to nibbles in a byte to store two data with values 0 to FF
     typedef struct nibble_t
     {
         unsigned char data = 0b00000000;
@@ -57,6 +57,5 @@ namespace memopt
         }
     };
 } // namespace memopt
-
 
 #endif // !MEMORY_OPTIMIZE_BYTE_NIBBLE_TABLE_HPP

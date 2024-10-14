@@ -1,8 +1,8 @@
 /** Binary Table Library
  * ------------------------------------
- * @brief Provide an binary table to reduce the quantity of unsigned chareans used on project
+ * @brief Provide an binary table to reduce the quantity of unsigned char used on project
  *
- * @details The binary table uses a byte (8-Bits) to store 8 unsigned chareans, instead the traditional unsigned char uses 1 byte to store 0 or 1
+ * @details The binary table uses a byte (8-Bits) to store 8 unsigned char, instead the traditional unsigned char uses 1 byte to store 0 or 1
  *
  * @author Matheus L. Silvati
  *
